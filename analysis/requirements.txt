@@ -1,0 +1,10 @@
+pymongo
+requests >= 1.0.2
+jieba >= 0.31
+numpy
+iron_mq >= 0.5
+http://python-jianfan.googlecode.com/files/jianfan-0.0.2.zip
+git+git://github.com/soshio/datetimes.git
+git+git://github.com/soshio/config.git
+git+git://github.com/soshio/caching.git
+boto

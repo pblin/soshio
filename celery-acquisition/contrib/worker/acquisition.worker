@@ -1,0 +1,14 @@
+# set the runtime language. Python workers use "python"
+runtime "python"
+# exec is the file that will be executed:
+exec "worker.py"
+
+pip "git+git://github.com/iron-io/iron_cache_python.git"
+pip "mechanize"
+
+full_remote_build true
+
+dir "browser"
+file ".iron.json"
+file "test.iron.json"
+file "production.iron.json"

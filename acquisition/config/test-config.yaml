@@ -1,0 +1,2 @@
+﻿MONGO_ENV: {DB: test-application, URI: 'mongodb://heimdall:lzIVsf192KCp@ds039267.mongolab.com:39267/test-application'}
+AWS_ENV: {KEY: 'AKIAJYCKYPODJQGYJ55Q', SECRET: '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'}

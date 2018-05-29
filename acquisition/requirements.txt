@@ -1,0 +1,12 @@
+boto
+requests >= 1.0.4
+requests-oauth >= 0.4.0
+oauth2
+pymongo
+newrelic
+pyqqweibo
+twitter
+jianfan >= 0.0.2
+git+git://github.com/soshio/datetimes.git
+git+git://github.com/soshio/config.git
+git+git://github.com/soshio/caching.git

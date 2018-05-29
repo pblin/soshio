@@ -1,0 +1,3 @@
+﻿MONGO_ENV: {DB: application, URI: 'mongodb://heimdall:lzIVsf192KCp@ds047447.mongolab.com:47447/application'}
+MQ_ENV: {PROJECT: '51950c22ed3d76486d0028ff',  TOKEN: 'B0-GQ7E__E_GuotFjHjceG8X_Zo'}
+#SOCIALGIST_URI: 'https://soshio.socialgist.com/stream/sinaweibo_main/subscription/main/part/1/data.json'

@@ -1,0 +1,5 @@
+MONGO_ENV: {DB: test-application, URI: 'mongodb://heimdall:lzIVsf192KCp@ds039267.mongolab.com:39267/test-application'}
+COUCH_ENV: {USER: tionglencellestatightede, PASSWORD: 226JIxk8ilaRmRC8sB8SNPtK, URI: 'https://soshio.cloudant.com/test-analyses2'}
+LOG_ENV: {USER: tedintredeenowedowevegir , PASSWORD: KQRS1KXJPH6bmrGBGGYc82ve, URI: 'https://soshio.cloudant.com/test-usages'}
+SALESFORCE_ENV: {USER: icklyhissitookedeadennev, PASSWORD: 7VUSDPlJOAwg11bINQW8rxYj, URI: 'https://soshio.cloudant.com/salesforce-log'}
+CREDENTIAL: {USERNAME: 'admininja', PASSWORD: 'bc98fca468598c16e2222501d6ec01c54153f34d8ce5b3d880fe8bd766907960'}

@@ -1,0 +1,6 @@
+﻿#MONGO_ENV: {DB: test-production, URI: 'mongodb://accountmanager:showMeTheMoney@ds041168.mongolab.com:41168/test-production'}
+MONGO_ENV: {DB: application, URI: 'mongodb://heimdall:lzIVsf192KCp@ds047447.mongolab.com:47447/application'}
+MQ_ENV: {PROJECT: '51950c22ed3d76486d0028ff',  TOKEN: 'B0-GQ7E__E_GuotFjHjceG8X_Zo', HOST: 'mq-rackspace-ord.iron.io'}
+AWS_ENV: {KEY: 'AKIAJYCKYPODJQGYJ55Q', SECRET: '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'}
+API: {HOST: 'http://soshio-analysis.herokuapp.com'}
+CELERY_QUEUE_NAME: 'celery'

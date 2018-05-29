@@ -1,0 +1,7 @@
+flask-sslify >= 0.1.4
+flask >= 0.8
+requests >= 1.0.4
+pymongo
+newrelic
+git+git://github.com/soshio/datetimes.git
+git+git://github.com/soshio/config.git

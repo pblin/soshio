@@ -1,0 +1,9 @@
+pymongo
+requests
+iron_mq
+newrelic
+#jianfan
+http://python-jianfan.googlecode.com/files/jianfan-0.0.2.zip
+pebble
+-e git://github.com/soshio/config.git#egg=config
+-e git://github.com/soshio/datetimes.git#egg=datetimes

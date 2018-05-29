@@ -1,0 +1,2 @@
+worker: newrelic-admin run-program celery worker -A acquisition.tasks --concurrency=9
+beat: python beat.py

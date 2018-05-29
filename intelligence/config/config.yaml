@@ -1,0 +1,4 @@
+CREDENTIAL: {USERNAME: 'jasonBourne', PASSWORD: 'd78614f54841db61d37694f931f6dd5f8121b1461a7d5edb9ba7074cdbdc33d7'}
+COUCH_ENV: {USER: ssirfalitheyeticeiriewhi, PASSWORD: I41XHNMIHSextOpB6KTUChJW, URI: 'https://soshio.cloudant.com/analyses'}
+MQ_ENV: {PROJECT: '51950c22ed3d76486d0028ff',  TOKEN: 'B0-GQ7E__E_GuotFjHjceG8X_Zo', HOST: 'mq-rackspace-ord.iron.io'}
+EXPORT: 'export.getsoshio.com'

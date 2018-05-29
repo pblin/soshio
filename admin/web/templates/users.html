@@ -1,0 +1,267 @@
+{% extends "index.html" %}
+
+{% block style %}
+{% endblock %}
+
+{% block nav %}
+<li class="active"><a href="users"><i class="icon-th-list icon-white"></i> User Manager</a></li>
+<li><a href="environment"><i class="icon-tasks icon-white"></i> Environement Monitor</a></li>
+{% endblock %}
+
+{% block body %}
+<button class="btn btn-primary" onclick="UsersManager.prepAddUser();"><i class="icon-user icon-white"></i> Add User</button>
+<div class="row-fluid">
+    <table id="users-table" class="table table-striped">
+        <thead>
+            <tr>
+                <th>Username</th>
+                <th>Created At</th>
+                <th>Billing Plan</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody id="users-tbody"></tbody>
+    </table>
+</div>
+{% endblock %}
+
+{% block modal %}
+<div class="modal hide fade" id="user-modal">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><i class="icon-remove"></i></button>
+        <h3 id="user-modal-header"></h3>
+    </div>
+    <div class="modal-body">
+        <div class="accordion">
+            <div class="accordion-group">
+                <div class="accordion-heading">
+                    <a class="accordion-toggle" data-toggle="collapse" href="#user-modal-basic"><h4>Basic</h4></a>
+                </div>
+                <div class="accordion-body collapse" id="user-modal-basic">
+                    <div class="accordion-inner">
+                        <form id="user-basic-form" class="form-horizontal well" action="#">
+                            <fieldset>
+                                <div class="control-group" id="user-modal-username">
+                                    <label class="control-label">Username</label>
+                                    <div class="controls">
+                                        <input type="text" class="input" id="user-basic-username" name="username"></input>
+                                        <span class="help-block">Username, cannot be changed once set.</span>
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label">Password</label>
+                                    <div class="controls">
+                                        <input type="password" class="input password" id="user-basic-password" name="password" minlength="5"></input>
+                                        <span class="help-block">Password, with minimum of 5 characters.</span>
+                                    </div>
+                                </div>
+                                <div class="form-actions">
+                                    <button class="btn btn-primary" data-form="#user-basic-form" onclick="UsersManager.updateUser(this);"><i class="icon-pencil icon-white"></i> Update</button>
+                                </div>
+                            </fieldset>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="accordion-group">
+                <div class="accordion-heading">
+                    <a class="accordion-toggle" data-toggle="collapse" href="#user-modal-contact"><h4>Contact</h4></a>
+                </div>
+                <div class="accordion-body collapse" id="user-modal-contact">
+                    <div class="accordion-inner">
+                        <form id="user-contact-form" class="form-horizontal well" action="#">
+                            <fieldset>
+                                <div class="control-group">
+                                    <label class="control-label">Name</label>
+                                    <div class="controls">
+                                        <input type="text" class="input" id="user-contact-name" name="contact.name" placeholder="Jane Doe"></input>
+                                        <span class="help-block">Name of the contact.</span>
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label">Email</label>
+                                    <div class="controls">
+                                        <input type="text" class="input email" id="user-contact-email" name="contact.email" placeholder="name@example.com"></input>
+                                        <span class="help-block">Email of the contact.</span>
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label">Phone</label>
+                                    <div class="controls">
+                                        <input type="text" class="input phone" id="user-contact-phone" name="contact.phone" placeholder="xxx-xxx-xxxx"></input>
+                                        <span class="help-block">Phone of the contact.</span>
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label">Company</label>
+                                    <div class="controls">
+                                        <input type="text" class="input" id="user-contact-company" name="contact.company" placeholder="Monsters Inc."></input>
+                                        <span class="help-block">Company of the contact.</span>
+                                    </div>
+                                </div>
+                                <div class="form-actions">
+                                    <button class="btn btn-primary" data-form="#user-contact-form" onclick="UsersManager.updateUser(this);"><i class="icon-pencil icon-white"></i> Update</button>
+                                </div>
+                            </fieldset>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="accordion-group">
+                <div class="accordion-heading">
+                    <a class="accordion-toggle" data-toggle="collapse" href="#user-modal-plan"><h4>Plan</h4></a>
+                </div>
+                <div class="accordion-body collapse" id="user-modal-plan">
+                    <div class="accordion-inner">
+                        <div class="well" id="plan-stripe" >
+                            <a class="btn btn-warning" target="new" href="https://manage.stripe.com/dashboard">This is Stripe plan. Please refer to Stripe for up-to-date detail.</a>
+                        </div>
+                        <form id="user-plan-form" class="form-horizontal well" action="#">
+                            <fieldset>
+                                <div class="control-group">
+                                    <label class="control-label">Name</label>
+                                    <div class="controls">
+                                        <div class="btn-group" data-toggle="buttons-radio">
+                                            <button class="btn" id="user-plan-button-trial" onclick="UsersManager.setPlan('trial');">Trial</button>
+                                            <button class="btn" id="user-plan-button-basic" onclick="UsersManager.setPlan('basic');">Basic</button>
+                                            <button class="btn" id="user-plan-button-pro" onclick="UsersManager.setPlan('pro');">Pro</button>
+                                            <button class="btn" id="user-plan-button-enterprise" onclick="UsersManager.setPlan('enterprise');">Enterprise</button>
+                                        </div>
+                                        <input type="hidden" id="user-plan-name" name="plan.name" value="trial"></input>
+                                        <span class="help-block">Name of the billing plan.</span>
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label">Monthly</label>
+                                    <div class="controls">
+                                        <div class="input-prepend">
+                                            <span class="add-on">$</span>
+                                            <input type="text" class="input" id="user-plan-monthly" name="plan.monthly"></input>
+                                        </div>
+                                        <span class="help-block">Monthly fee of the plan.</span>
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label">Limit</label>
+                                    <div class="controls">
+                                        <div class="input-append">
+                                            <input type="text" class="input" id="user-plan-limit" name="plan.limit"></input>
+                                            <span class="add-on">Posts</span>
+                                        </div>
+                                        <span class="help-block">Data limit included in the monthly fee.</span>
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label">Overage</label>
+                                    <div class="controls">
+                                        <div class="input-prepend">
+                                            <span class="add-on">$</span>
+                                            <input type="text" class="input" id="user-plan-overage" name="plan.overage"></input>
+                                        </div>
+                                        <span class="help-block">Overage fee per post over the limit.</span>
+                                    </div>
+                                </div>
+                                <div class="form-actions">
+                                    <button class="btn btn-primary" data-form="#user-plan-form" onclick="UsersManager.updateUser(this);"><i class="icon-pencil icon-white"></i> Update</button>
+                                </div>
+                            </fieldset>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="accordion-group">
+                <div class="accordion-heading">
+                    <a class="accordion-toggle" data-toggle="collapse" href="#user-modal-billing"><h4>Billing</h4></a>
+                </div>
+                <div class="accordion-body collapse" id="user-modal-billing">
+                    <div class="accordion-inner">
+                        <table id="users-billing-table" class="table table-striped">
+                            <caption>Invoices</caption>
+                            <thead>
+                                <tr>
+                                    <th>Billing Period</th>
+                                    <th>Data Consumed</th>
+                                    <th>Overage</th>
+                                    <th>Surcharge</th>
+                                    <th>Total ($)</th>
+                                </tr>
+                            </thead>
+                            <tbody id="users-billing-tbody"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="accordion-group">
+                <div class="accordion-heading">
+                    <a class="accordion-toggle" data-toggle="collapse" href="#user-modal-subscriptions"><h4>Subscriptions</h4></a>
+                </div>
+                <div class="accordion-body collapse" id="user-modal-subscriptions">
+                    <div class="accordion-inner">
+                        <form class="form-horizontal well" id="user-subscriptions-form" action="#">
+                            <fieldset>
+                                <div class="control-group">
+                                    <label class="control-label">Query</label>
+                                    <div class="controls">
+                                        <textarea placeholder="(This AND That) OR (Here AND NOT There)" id="user-subscriptions-query" rows="3"></textarea>
+                                        <span class="help-block">Topic query to subscribe.</span>
+                                    </div>
+                                </div>
+                                <div class="control-group">
+                                    <label class="control-label" for="query">Description</label>
+                                    <div class="controls">
+                                        <input type="text" placeholder="This is an example" id="user-subscriptions-description" name="description"></input>
+                                        <span class="help-block">Description for this Subscription.</span>
+                                    </div>
+                                </div>
+				<div class="control-group">
+				    <label class="control-label" for="query">Grouping Tags</label>
+                                    <div class="controls">
+                                        <input type="text" placeholder="Q1 Campain,Product Launch" id="user-subscriptions-tags" name="tags"></input>
+                                        <span class="help-block">Tags for grouping this Subscription. Use comma (,) to assign more than one group.</span>
+                                    </div>
+                                </div>
+                                <div class="form-actions">
+                                    <button class="btn btn-primary" id="user-subscriptions-button" onclick="SubscriptionsManager.updateSubscription(this);"><i class="icon-pencil icon-white"></i> Subscribe/Update</button>
+                                </div>
+                            </fieldset>
+                        </form>
+                        <h5>Current</h5>
+                        <ul id="user-subscriptions-list"></ul>
+                        <h5>Past</h5>
+                        <ul id="user-past-subscriptions-list"></ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="accordion-group">
+                <div class="accordion-heading">
+                    <a class="accordion-toggle" data-toggle="collapse" href="#user-modal-usages"><h4>Usages</h4></a>
+                </div>
+                <div class="accordion-body collapse" id="user-modal-usages">
+                    <div class="accordion-inner">
+                        <div id="user-usages-chart"><svg></svg></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-primary" id="user-modal-add-button" onclick="UsersManager.addUser();"><i class="icon-pencil icon-white"></i> Add User</button>
+        <button class="btn" data-dismiss="modal" aria-hidden="true"><i class="icon-remove"></i> Close</button>
+    </div>
+</div>
+{% endblock %}
+
+{% block javascripts %}
+<script src="static/js/d3.v2.min.js"></script>
+<script src="static/js/nv.d3.min.js"></script>
+<script src="static/js/billing.js"></script>
+<script src="static/js/usages.js"></script>
+<script src="static/js/subscriptions.js"></script>
+<script src="static/js/users.js"></script>
+{% endblock %}

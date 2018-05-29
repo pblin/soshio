@@ -1,0 +1,1 @@
+MONGO_ENV: {DB: 'osis-application', URI: 'mongodb://accountmanager:showMeTheMoney@ds035428.mongolab.com:35428/osis-application'}

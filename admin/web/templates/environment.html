@@ -1,0 +1,21 @@
+{% extends "index.html" %}
+
+{% block style %}
+{% endblock %}
+
+{% block nav %}
+<li><a href="users"><i class="icon-th-list icon-white"></i> User Manager</a></li>
+<li class="active"><a href="environment"><i class="icon-tasks icon-white"></i> Environement Monitor</a></li>
+{% endblock %}
+
+{% block body %}
+<h4>Feeds Throughput</h4>
+<div id="environment-feeds-chart"><svg></svg></div>
+{% endblock %}
+
+{% block javascripts %}
+<script src="static/js/moment.min.js"></script>
+<script src="static/js/d3.v2.min.js"></script>
+<script src="static/js/nv.d3.min.js"></script>
+<script src="static/js/feeds.js"></script>
+{% endblock %}

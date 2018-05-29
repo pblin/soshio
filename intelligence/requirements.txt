@@ -1,0 +1,9 @@
+flask >= 0.8
+requests >= 1.0.4
+newrelic >= 2.8.0.7
+gunicorn
+celery
+iron_celery >= 0.4.1
+iron_cache
+git+git://github.com/soshio/datetimes.git
+git+git://github.com/soshio/config.git

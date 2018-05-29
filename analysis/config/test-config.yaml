@@ -1,0 +1,13 @@
+﻿DB_ENV: {DB: test-analytics, URI: 'mongodb://testMaster:gotestgo@ds039257.mongolab.com:39257/test-analytics'}
+COUCH_ENV: {USER: wereptherenbractinglacin, PASSWORD: Cen4mJYEN2lHjdB6DqmpDFes, URI: 'https://soshio.cloudant.com/test-analyses2'}
+MQ_ENV: {PROJECT: '519514072267d87d270009d3', application, TOKEN: '3_XQjebvatOGUd_7uWujEbNnT5g', HOST: 'mq-rackspace-ord.iron.io'}
+AWS_ENV: {KEY: 'AKIAJYCKYPODJQGYJ55Q', SECRET: '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'}
+FORCE_LOCAL: False
+PMI_THRESHOLD: 0.001
+NGRAM_THRESHOLD: -4.0
+POLARITY_DEVIATION: 15.0
+POLARITY_MEAN: 0.0
+CLASSIFICATION_DEVIATION: 0.5
+CLASSIFICATION_MEAN: 0.0
+TREND_TTL: 30
+TERM_TTL: 1

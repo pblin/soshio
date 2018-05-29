@@ -1,0 +1,9 @@
+﻿DB_ENV: {DB: analytics, URI: 'mongodb://mrGuru:tellMeMore@ds033907.mongolab.com:33907/analytics'}
+COUCH_ENV: {USER: ssirfalitheyeticeiriewhi, PASSWORD: I41XHNMIHSextOpB6KTUChJW, URI: 'https://soshio.cloudant.com/analyses'}
+MQ_ENV: {PROJECT: '51950c22ed3d76486d0028ff', application, TOKEN: 'B0-GQ7E__E_GuotFjHjceG8X_Zo', HOST: 'mq-rackspace-ord.iron.io'}
+AWS_ENV: {KEY: 'AKIAJYCKYPODJQGYJ55Q', SECRET: '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'}
+FORCE_LOCAL: False
+POLARITY_DEVIATION: 15.0
+POLARITY_MEAN: 0.0
+CLASSIFICATION_DEVIATION: 0.5
+CLASSIFICATION_MEAN: 0.0

@@ -1,0 +1,2 @@
+worker: newrelic-admin run-program python worker.py
+sync: python sync.py
